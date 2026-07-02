@@ -8,8 +8,8 @@ import Layout from "@/components/Layout";
 const Home: NextPage = () => {
   const { t } = useTranslation();
   const levels = [
-    { slug: "ssc", title: t("landing.ssc"), description: t("landing.sscDesc"), color: "from-[#1c1c1c] via-[#4d2909] to-[#c15c00]" },
-    { slug: "hsc", title: t("landing.hsc"), description: t("landing.hscDesc"), color: "from-[#1A1A1A] via-[#382130] to-[#AA0BBE]/80" },
+    { slug: "ssc", title: t("landing.ssc"), description: t("landing.sscDesc"), color: "level-card-ssc" },
+    { slug: "hsc", title: t("landing.hsc"), description: t("landing.hscDesc"), color: "level-card-hsc" },
   ];
 
   const features = [
