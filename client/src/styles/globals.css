@@ -18,6 +18,12 @@
     --text-primary: #ffffff;
     --text-secondary: #d0d0d0;
     --text-muted: #9a9a9a;
+    --bg-gradient-start: #090909;
+    --bg-gradient-end: #050505;
+    --bg-accent-subtle: rgba(255, 122, 0, 0.05);
+    --bg-accent-glow: rgba(255, 122, 0, 0.045);
+    --bg-accent-mesh: rgba(255, 122, 0, 0.028);
+    --bg-accent-aurora: rgba(255, 122, 0, 0.05);
   }
 
   .dark {
@@ -211,9 +217,9 @@
     cursor: pointer;
     display: inline-flex;
     font-family: "Inter", sans-serif;
-    min-height: 48px;
+    min-height: 41px;
     justify-content: center;
-    line-height: 1;
+    line-height: 0;
     list-style: none;
     overflow: hidden;
     padding-left: 16px;
@@ -418,30 +424,166 @@
     outline: none;
   }
 
-  .bg-landing-page {
-    position: relative;
-    background: radial-gradient(circle at top, rgba(255, 122, 0, 0.08), transparent 45%),
-      linear-gradient(180deg, #090909, #050505);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color-scheme: dark;
-  }
+  /* ── AppBackground design system ── */
 
-  .bg-landing-page::before {
-    content: "";
-    position: absolute;
+  .app-background {
+    position: fixed;
     inset: 0;
+    z-index: 0;
     pointer-events: none;
-    background-image: radial-gradient(600px 600px at 10% 20%, rgba(255, 122, 0, 0.04), transparent 20%),
-      radial-gradient(500px 500px at 85% 12%, rgba(255, 149, 0, 0.03), transparent 18%),
-      radial-gradient(300px 300px at 50% 80%, rgba(255, 122, 0, 0.02), transparent 25%);
-    mix-blend-mode: normal;
-    opacity: 1;
+    overflow: hidden;
+    isolation: isolate;
   }
 
-  .hero-decor-circle {
-    @apply pointer-events-none absolute rounded-full;
-    background: rgba(255, 122, 0, 0.06);
+  .app-background__layer {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  /* Layer 1 — dark premium base gradient */
+  .app-background__layer--base {
+    inset: 0;
+    background:
+      radial-gradient(circle at 50% -8%, var(--bg-accent-subtle) 0%, transparent 45%),
+      linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  }
+
+  /* Layer 2 — ultra-soft ambient orange glow */
+  .app-background__layer--glow {
+    inset: -25%;
+    background: radial-gradient(
+      ellipse 70% 55% at 50% -5%,
+      var(--bg-accent-glow) 0%,
+      transparent 65%
+    );
+    will-change: transform, opacity;
+    animation: app-bg-glow-drift 45s ease-in-out infinite alternate;
+  }
+
+  /* Layer 3 — flowing mesh gradient */
+  .app-background__layer--mesh {
+    inset: -40%;
+    background:
+      radial-gradient(ellipse 42% 32% at 18% 28%, var(--bg-accent-mesh) 0%, transparent 55%),
+      radial-gradient(ellipse 38% 42% at 82% 68%, rgba(255, 100, 0, 0.022) 0%, transparent 55%),
+      radial-gradient(ellipse 48% 36% at 58% 18%, rgba(255, 140, 0, 0.018) 0%, transparent 55%);
+    filter: blur(48px);
+    will-change: transform;
+    animation: app-bg-mesh-flow 60s ease-in-out infinite alternate;
+  }
+
+  /* Layer 4 — faint diagonal streaks + grain */
+  .app-background__layer--texture {
+    inset: 0;
+    opacity: 0.025;
+    background-image:
+      repeating-linear-gradient(
+        128deg,
+        transparent 0,
+        transparent 96px,
+        rgba(255, 255, 255, 0.35) 96px,
+        rgba(255, 255, 255, 0.35) 97px
+      ),
+      repeating-linear-gradient(
+        -38deg,
+        transparent 0,
+        transparent 128px,
+        rgba(255, 122, 0, 0.15) 128px,
+        rgba(255, 122, 0, 0.15) 129px
+      );
+  }
+
+  /* Optional — edge aurora wisps */
+  .app-background__layer--aurora {
+    width: 55%;
+    height: 45%;
+    filter: blur(72px);
+    will-change: transform, opacity;
+    animation: app-bg-aurora 90s ease-in-out infinite;
+  }
+
+  .app-background__layer--aurora-left {
+    left: -18%;
+    top: 8%;
+    background: radial-gradient(ellipse at center, var(--bg-accent-aurora) 0%, transparent 72%);
+    animation-delay: 0s;
+  }
+
+  .app-background__layer--aurora-right {
+    right: -18%;
+    bottom: 6%;
+    background: radial-gradient(ellipse at center, rgba(204, 98, 0, 0.04) 0%, transparent 72%);
+    animation-delay: -45s;
+  }
+
+  /* Optional — barely visible grid */
+  .app-background__layer--grid {
+    inset: 0;
+    opacity: 0.018;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.45) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.45) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, black 15%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, black 15%, transparent 72%);
+  }
+
+  @keyframes app-bg-glow-drift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0.55;
+    }
+    50% {
+      transform: translate3d(1.5%, 0.8%, 0) scale(1.04);
+      opacity: 0.75;
+    }
+    100% {
+      transform: translate3d(-0.8%, 1.2%, 0) scale(1.02);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes app-bg-mesh-flow {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    33% {
+      transform: translate3d(2.5%, -1.5%, 0) scale(1.03);
+    }
+    66% {
+      transform: translate3d(-1.8%, 2%, 0) scale(1.01);
+    }
+    100% {
+      transform: translate3d(1%, 0.5%, 0) scale(1.02);
+    }
+  }
+
+  @keyframes app-bg-aurora {
+    0%,
+    100% {
+      opacity: 0.25;
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      opacity: 0.55;
+      transform: translate3d(3%, -1%, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .app-background__layer--glow,
+    .app-background__layer--mesh,
+    .app-background__layer--aurora {
+      animation: none !important;
+    }
+
+    .app-background__layer--glow {
+      opacity: 0.65;
+    }
+
+    .app-background__layer--aurora {
+      opacity: 0.35;
+    }
   }
 
   .feature-card {

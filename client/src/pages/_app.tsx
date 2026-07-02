@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/lib/auth";
 import { ThemeProvider } from "@/lib/theme";
+import AppBackground from "@/components/AppBackground";
 import "@/lib/i18n";
 import "../styles/globals.css";
 
@@ -9,7 +10,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <Component {...pageProps} />
+        <AppBackground />
+        <div className="relative z-[1]">
+          <Component {...pageProps} />
+        </div>
         <Toaster
           position="top-right"
           toastOptions={{

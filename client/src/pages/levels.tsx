@@ -11,13 +11,13 @@ const LevelsPage: NextPage = () => {
       slug: "ssc",
       title: t("landing.ssc"),
       description: t("landing.sscDesc"),
-      color: "from-primary-700 via-primary-600 to-primary-500",
+      color: "from-[#1c1c1c] via-[#4d2909] to-[#c15c00]",
     },
     {
       slug: "hsc",
       title: t("landing.hsc"),
       description: t("landing.hscDesc"),
-      color: "from-[#1A1A1A] via-surface-elevated to-primary-900/80",
+      color: "from-[#1A1A1A] via-[#382130] to-[#AA0BBE]/80",
     },
   ];
 

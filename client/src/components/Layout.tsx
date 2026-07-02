@@ -11,7 +11,7 @@ interface LayoutProps {
 
 export default function Layout({ children, hideFooter = false }: LayoutProps) {
   return (
-    <div className="flex min-h-screen flex-col bg-landing-page relative">
+    <div className="relative flex min-h-screen flex-col">
       <Navbar />
       <main id="main-content" className="flex-1">
         {children}

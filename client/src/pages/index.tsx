@@ -8,8 +8,8 @@ import Layout from "@/components/Layout";
 const Home: NextPage = () => {
   const { t } = useTranslation();
   const levels = [
-    { slug: "ssc", title: t("landing.ssc"), description: t("landing.sscDesc"), color: "from-primary-700 via-primary-600 to-primary-500" },
-    { slug: "hsc", title: t("landing.hsc"), description: t("landing.hscDesc"), color: "from-[#1A1A1A] via-surface-elevated to-primary-900/80" },
+    { slug: "ssc", title: t("landing.ssc"), description: t("landing.sscDesc"), color: "from-[#1c1c1c] via-[#4d2909] to-[#c15c00]" },
+    { slug: "hsc", title: t("landing.hsc"), description: t("landing.hscDesc"), color: "from-[#1A1A1A] via-[#382130] to-[#AA0BBE]/80" },
   ];
 
   const features = [
@@ -62,8 +62,6 @@ const Home: NextPage = () => {
             </Link>
           </div>
         </div>
-        <div className="hero-decor-circle absolute -right-20 -top-20 h-72 w-72" aria-hidden="true" />
-        <div className="hero-decor-circle absolute -bottom-10 -left-10 h-48 w-48" aria-hidden="true" />
       </section>
 
       <section className="bg-transparent py-20" aria-labelledby="levels-heading">

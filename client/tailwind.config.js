@@ -30,6 +30,9 @@ module.exports = {
         },
       },
       fontFamily: { sans: ["Inter", "Hind Siliguri", "sans-serif"] },
+      fontSize: {
+        sm: ["1rem", { lineHeight: "1.25rem" }],
+      },
       animation: {
         "fade-in": "fadeIn 0.3s ease-in-out",
         "slide-up": "slideUp 0.3s ease-out",
