@@ -34,7 +34,7 @@
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
-    background-color: var(--bg-gradient-end);
+    background-color: transparent;
   }
 
   body {
