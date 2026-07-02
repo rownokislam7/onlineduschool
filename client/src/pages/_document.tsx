@@ -11,12 +11,12 @@ export default function Document() {
           rel="stylesheet"
         />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#2563eb" />
+        <meta name="theme-color" content="#050505" />
       </Head>
       <body>
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-primary-600 focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:text-primary-400 focus:shadow-glow"
         >
           Skip to main content
         </a>

@@ -30,7 +30,7 @@ const LevelPage: NextPage = () => {
     return (
       <Layout>
         <div className="container-page">
-          <p className="text-center text-gray-500">Loading…</p>
+          <p className="text-center text-content-muted">Loading…</p>
         </div>
       </Layout>
     );
@@ -42,7 +42,7 @@ const LevelPage: NextPage = () => {
         <div className="container-page">
           <p className="text-center text-red-500">{t("common.notFound")}</p>
           <div className="mt-4 text-center">
-            <Link href="/levels" className="text-primary-600 underline">
+            <Link href="/levels" className="link-accent underline">
               {t("landing.levelsTitle")}
             </Link>
           </div>
@@ -61,16 +61,16 @@ const LevelPage: NextPage = () => {
       <div className="container-page">
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <Link href="/levels" className="text-sm text-primary-600 hover:underline dark:text-primary-400">
+            <Link href="/levels" className="link-accent text-sm hover:underline">
               ← {t("landing.levelsTitle")}
             </Link>
-            <h1 className="mt-2 text-3xl font-extrabold text-gray-900 dark:text-white">
+            <h1 className="mt-2 text-3xl font-extrabold text-white">
               {level} {t("landing.divisionsTitle")}
             </h1>
           </div>
         </div>
 
-        <p className="mb-8 text-gray-500 dark:text-gray-400">
+        <p className="mb-8 text-content-muted">
           {t("landing.subtitle")}
         </p>
 

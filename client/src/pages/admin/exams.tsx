@@ -176,10 +176,10 @@ const AdminExamsPage: NextPage = () => {
       <div className="container-page">
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <Link href="/admin" className="text-sm text-primary-600 hover:underline dark:text-primary-400">
+            <Link href="/admin" className="link-accent text-sm hover:underline">
               ← {t("admin.dashboard")}
             </Link>
-            <h1 className="mt-1 text-2xl font-extrabold text-gray-900 dark:text-white">
+            <h1 className="mt-1 text-2xl font-extrabold text-white">
               {t("admin.exams")}
             </h1>
           </div>
@@ -189,42 +189,42 @@ const AdminExamsPage: NextPage = () => {
           </Button>
         </div>
 
-        <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 overflow-hidden">
+        <div className="surface-card overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
+              <thead className="border-b border-white/[0.08] bg-surface-secondary">
                 <tr>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">Title</th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">Subject</th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">Slug</th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">Status</th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">Actions</th>
+                  <th className="px-6 py-3 text-left font-semibold text-white">Title</th>
+                  <th className="px-6 py-3 text-left font-semibold text-white">Subject</th>
+                  <th className="px-6 py-3 text-left font-semibold text-white">Slug</th>
+                  <th className="px-6 py-3 text-left font-semibold text-white">Status</th>
+                  <th className="px-6 py-3 text-left font-semibold text-white">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {isExamsLoading ? (
                   <tr>
-                    <td colSpan={5} className="px-6 py-10 text-center text-gray-500">
+                    <td colSpan={5} className="px-6 py-10 text-center text-content-muted">
                       <Skeleton className="h-6" />
                     </td>
                   </tr>
                 ) : exams?.length ? (
                   exams.map((exam) => (
-                    <tr key={exam.id} className="border-b border-gray-100 dark:border-gray-700 last:border-none">
-                      <td className="px-6 py-4 text-gray-900 dark:text-white">{exam.title}</td>
-                      <td className="px-6 py-4 text-gray-500 dark:text-gray-400">{exam.subject?.name ?? exam.subjectId}</td>
-                      <td className="px-6 py-4 font-mono text-xs text-gray-600 dark:text-gray-300">{exam.slug}</td>
+                    <tr key={exam.id} className="border-b border-white/[0.05] last:border-none transition-colors duration-[250ms] hover:bg-white/[0.03]">
+                      <td className="px-6 py-4 text-white">{exam.title}</td>
+                      <td className="px-6 py-4 text-content-muted">{exam.subject?.name ?? exam.subjectId}</td>
+                      <td className="px-6 py-4 font-mono text-xs text-content-muted">{exam.slug}</td>
                       <td className="px-6 py-4">
                         <Badge variant={exam.published ? "green" : "gray"}>
                           {exam.published ? "Published" : "Draft"}
                         </Badge>
                       </td>
-                      <td className="px-6 py-4 text-gray-500 dark:text-gray-400">
+                      <td className="px-6 py-4 text-content-muted">
                         <div className="flex items-center gap-2">
                           <button
                             type="button"
                             onClick={() => openEdit(exam)}
-                            className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-primary-600 dark:hover:bg-gray-700"
+                            className="rounded-lg p-2 text-content-muted transition-colors duration-[250ms] hover:bg-white/[0.06] hover:text-primary-400"
                             aria-label="Edit exam"
                           >
                             <PencilSquareIcon className="h-4 w-4" />
@@ -256,7 +256,7 @@ const AdminExamsPage: NextPage = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={5} className="px-6 py-10 text-center text-gray-500">
+                    <td colSpan={5} className="px-6 py-10 text-center text-content-muted">
                       {examsError ? "Unable to load exams." : "No exams found. Create one above."}
                     </td>
                   </tr>
@@ -267,25 +267,25 @@ const AdminExamsPage: NextPage = () => {
         </div>
 
         {/* CSV import modal */}
-        <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-          <h2 className="mb-2 font-bold text-gray-900 dark:text-white">
+        <div className="surface-card mt-6 p-6">
+          <h2 className="mb-2 font-bold text-white">
             {t("admin.import")}
           </h2>
-          <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">
+          <p className="mb-4 text-xs text-content-muted">
             {t("admin.importHint")}
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <input
               type="text"
               placeholder="Exam slug"
-              className="rounded-lg border border-gray-300 px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              className="input-field max-w-xs"
               onChange={(e) => setImportSlug(e.target.value)}
             />
             <input
               ref={fileRef}
               type="file"
               accept=".csv"
-              className="text-sm text-gray-600 dark:text-gray-400"
+              className="text-sm text-content-muted"
               aria-label="CSV file to import"
             />
             <Button
@@ -329,37 +329,37 @@ const AdminExamsPage: NextPage = () => {
           className="space-y-4"
         >
           <div>
-            <label htmlFor="title" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="title" className="mb-1 block text-xs font-medium text-content-secondary">
               Title (English) *
             </label>
             <input
               id="title"
               {...register("title", { required: true })}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              className="input-field"
             />
           </div>
           <div>
-            <label htmlFor="titlebn" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="titlebn" className="mb-1 block text-xs font-medium text-content-secondary">
               Title (Bangla)
             </label>
             <input
               id="titlebn"
               {...register("titlebn")}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              className="input-field"
             />
           </div>
           <div>
-            <label htmlFor="slug" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="slug" className="mb-1 block text-xs font-medium text-content-secondary">
               Slug (e.g. physics-ch1-mcq) *
             </label>
             <input
               id="slug"
               {...register("slug", { required: true, pattern: /^[a-z0-9-]+$/ })}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              className="input-field"
             />
           </div>
           <div>
-            <label htmlFor="subjectId" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="subjectId" className="mb-1 block text-xs font-medium text-content-secondary">
               Subject *
             </label>
             {subjects && subjects.length > 0 ? (
@@ -367,7 +367,7 @@ const AdminExamsPage: NextPage = () => {
                 id="subjectId"
                 {...register("subjectId", { required: true })}
                 defaultValue=""
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="input-field"
               >
                 <option value="" disabled>
                   Select a subject
@@ -383,7 +383,7 @@ const AdminExamsPage: NextPage = () => {
                 id="subjectId"
                 {...register("subjectId", { required: true })}
                 placeholder="Subject ID"
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="input-field"
               />
             )}
             {subjectError ? (
@@ -391,14 +391,14 @@ const AdminExamsPage: NextPage = () => {
                 {subjectError}. Enter the subject ID manually if the dropdown cannot load.
               </p>
             ) : !subjects || !subjects.length ? (
-              <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+              <p className="mt-1 text-xs text-content-muted dark:text-gray-400">
                 {subjects ? "No subjects available. Create subjects first." : "Loading subjects..."}
               </p>
             ) : null}
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="timeLimitMin" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label htmlFor="timeLimitMin" className="mb-1 block text-xs font-medium text-content-secondary">
                 Time Limit (min)
               </label>
               <input
@@ -406,7 +406,7 @@ const AdminExamsPage: NextPage = () => {
                 type="number"
                 defaultValue={30}
                 {...register("timeLimitMin")}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="input-field"
               />
             </div>
             <div className="flex flex-col gap-2 justify-center">

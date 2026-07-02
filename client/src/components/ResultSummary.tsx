@@ -86,12 +86,12 @@ export default function ResultSummary({
               .map((a) =>
                 a.totalScore > 0 ? Math.round((a.score / a.totalScore) * 100) : 0
               ),
-            borderColor: "rgb(59, 130, 246)",
-            backgroundColor: "rgba(59, 130, 246, 0.1)",
+            borderColor: "rgb(255, 122, 0)",
+            backgroundColor: "rgba(255, 122, 0, 0.1)",
             fill: true,
             tension: 0.4,
             pointRadius: 5,
-            pointBackgroundColor: "rgb(59, 130, 246)",
+            pointBackgroundColor: "rgb(255, 122, 0)",
           },
         ],
       }
@@ -101,12 +101,12 @@ export default function ResultSummary({
     <div className="space-y-8">
       {/* Score summary */}
       <section
-        className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-700 dark:bg-gray-800"
+        className="surface-card p-8"
         aria-labelledby="result-heading"
       >
         <h2
           id="result-heading"
-          className="mb-6 text-2xl font-bold text-gray-900 dark:text-white"
+          className="mb-6 text-2xl font-bold text-white"
         >
           {ownerName ? t("result.ownerTitle", { name: ownerName }) : t("result.title")}
         </h2>
@@ -123,13 +123,13 @@ export default function ResultSummary({
             {pct}%
           </div>
           <div>
-            <p className="text-4xl font-bold text-gray-900 dark:text-white">
+            <p className="text-4xl font-bold text-white">
               {result.score}{" "}
-              <span className="text-xl font-normal text-gray-500 dark:text-gray-400">
+              <span className="text-xl font-normal text-content-muted">
                 / {result.totalScore}
               </span>
             </p>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            <p className="mt-1 text-sm text-content-muted">
               {t("result.timeTaken")}: {timeTakenMin}m {timeTakenSec}s
             </p>
           </div>
@@ -215,12 +215,12 @@ export default function ResultSummary({
       {/* Score history chart */}
       {chartData && history && history.length > 1 && (
         <section
-          className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800"
+          className="surface-card p-6"
           aria-labelledby="history-heading"
         >
           <h3
             id="history-heading"
-            className="mb-4 text-lg font-bold text-gray-900 dark:text-white"
+            className="mb-4 text-lg font-bold text-white"
           >
             {t("result.scoreHistory")}
           </h3>

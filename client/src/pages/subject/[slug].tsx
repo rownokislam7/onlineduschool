@@ -37,7 +37,7 @@ const SubjectPage: NextPage = () => {
       <div className="container-page">
         <Link
           href={data?.subject.divisionId ? `/division/${slug}` : "/divisions"}
-          className="mb-6 inline-flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
+          className="mb-6 inline-flex items-center gap-2 text-sm text-content-muted transition-colors duration-[250ms] hover:text-primary-400"
         >
           <ArrowLeftIcon className="h-4 w-4" aria-hidden="true" />
           {t("common.back")}
@@ -49,16 +49,16 @@ const SubjectPage: NextPage = () => {
 
         {!isLoading && data && (
           <>
-            <h1 className="mb-2 text-3xl font-extrabold text-gray-900 dark:text-white">
+            <h1 className="mb-2 text-3xl font-extrabold text-white">
               {subjectName}
             </h1>
-            <p className="mb-10 text-gray-500 dark:text-gray-400">
+            <p className="mb-10 text-content-muted">
               {t("subject.availableExams")}
             </p>
 
             {data.exams.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-gray-300 bg-white p-12 text-center dark:border-gray-600 dark:bg-gray-800">
-                <p className="text-gray-500 dark:text-gray-400">
+              <div className="rounded-2xl border border-dashed border-white/[0.12] bg-surface p-12 text-center">
+                <p className="text-content-muted">
                   {t("common.noResults")}
                 </p>
               </div>

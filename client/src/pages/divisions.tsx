@@ -23,10 +23,10 @@ const DivisionsPage: NextPage = () => {
       </Head>
 
       <div className="container-page">
-        <h1 className="mb-2 text-3xl font-extrabold text-gray-900 dark:text-white">
+        <h1 className="mb-2 text-3xl font-extrabold text-white">
           {t("nav.divisions")}
         </h1>
-        <p className="mb-10 text-gray-500 dark:text-gray-400">
+        <p className="mb-10 text-content-muted">
           {t("landing.divisionsTitle")}
         </p>
 

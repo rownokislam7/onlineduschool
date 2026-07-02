@@ -71,12 +71,12 @@ describe("Badge", () => {
 
   it("applies blue variant class by default", () => {
     render(<Badge>Blue</Badge>);
-    expect(screen.getByText("Blue")).toHaveClass("bg-primary-100");
+    expect(screen.getByText("Blue")).toHaveClass("bg-primary-500/10");
   });
 
   it("applies danger variant class", () => {
     render(<Badge variant="red">Error</Badge>);
-    expect(screen.getByText("Error")).toHaveClass("bg-red-100");
+    expect(screen.getByText("Error")).toHaveClass("bg-red-500/10");
   });
 });
 

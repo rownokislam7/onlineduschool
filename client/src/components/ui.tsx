@@ -10,7 +10,7 @@ export function Skeleton({ className }: { className?: string }) {
   return (
     <div
       className={clsx(
-        "animate-pulse rounded-md bg-gray-200 dark:bg-gray-700",
+        "animate-pulse rounded-md bg-white/[0.06]",
         className
       )}
       aria-hidden="true"
@@ -20,7 +20,7 @@ export function Skeleton({ className }: { className?: string }) {
 
 export function SkeletonCard() {
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+    <div className="surface-card p-6">
       <Skeleton className="mb-3 h-6 w-2/3" />
       <Skeleton className="mb-2 h-4 w-full" />
       <Skeleton className="h-4 w-4/5" />
@@ -38,22 +38,22 @@ interface ProgressBarProps {
 
 export function ProgressBar({ value, label, color = "blue" }: ProgressBarProps) {
   const colors = {
-    blue: "bg-primary-500",
+    blue: "bg-gradient-to-r from-primary-600 to-primary-400",
     green: "bg-green-500",
     red: "bg-red-500",
-    yellow: "bg-yellow-400",
+    yellow: "bg-gradient-to-r from-primary-700 to-primary-400",
   };
 
   return (
     <div>
       {label && (
-        <div className="mb-1 flex justify-between text-xs font-medium text-gray-600 dark:text-gray-400">
+        <div className="mb-1 flex justify-between text-xs font-medium text-content-muted">
           <span>{label}</span>
           <span>{Math.round(value)}%</span>
         </div>
       )}
       <div
-        className="h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700"
+        className="h-2 w-full overflow-hidden rounded-full bg-white/[0.06]"
         role="progressbar"
         aria-valuenow={value}
         aria-valuemin={0}
@@ -107,33 +107,31 @@ export function Modal({ open, onClose, title, children, footer }: ModalProps) {
       aria-modal="true"
       aria-labelledby="modal-title"
     >
-      {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Panel */}
-      <div className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl dark:bg-gray-800 animate-slide-up">
-        <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-700">
+      <div className="relative w-full max-w-md animate-slide-up rounded-2xl border border-white/[0.08] bg-surface shadow-card">
+        <div className="flex items-center justify-between border-b border-white/[0.08] px-6 py-4">
           <h2
             id="modal-title"
-            className="text-lg font-semibold text-gray-900 dark:text-white"
+            className="text-lg font-semibold text-white"
           >
             {title}
           </h2>
           <button
             onClick={onClose}
-            className="rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-700"
+            className="rounded-full p-1 text-content-muted transition-colors duration-[250ms] hover:bg-white/[0.06] hover:text-white"
             aria-label="Close modal"
           >
             <XMarkIcon className="h-5 w-5" />
           </button>
         </div>
-        <div className="px-6 py-4">{children}</div>
+        <div className="px-6 py-4 text-content-secondary">{children}</div>
         {footer && (
-          <div className="flex justify-end gap-3 border-t border-gray-200 px-6 py-4 dark:border-gray-700">
+          <div className="flex justify-end gap-3 border-t border-white/[0.08] px-6 py-4">
             {footer}
           </div>
         )}
@@ -151,11 +149,11 @@ interface BadgeProps {
 
 export function Badge({ children, variant = "blue" }: BadgeProps) {
   const variants = {
-    blue: "bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300",
-    green: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
-    red: "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300",
-    yellow: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300",
-    gray: "bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300",
+    blue: "border border-primary-500/30 bg-primary-500/10 text-primary-300",
+    green: "border border-green-500/30 bg-green-500/10 text-green-400",
+    red: "border border-red-500/30 bg-red-500/10 text-red-400",
+    yellow: "border border-primary-500/30 bg-primary-500/10 text-primary-200",
+    gray: "border border-white/[0.08] bg-white/[0.06] text-content-muted",
   };
   return (
     <span
@@ -188,17 +186,15 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
+    "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-[250ms] focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:ring-offset-2 focus:ring-offset-[#050505] disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variants = {
-    primary:
-      "bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500",
-    secondary:
-      "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-primary-500 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700",
+    primary: "btn-primary",
+    secondary: "btn-secondary",
     danger:
-      "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
+      "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500/50 shadow-sm",
     ghost:
-      "text-gray-700 hover:bg-gray-100 focus:ring-gray-300 dark:text-gray-300 dark:hover:bg-gray-800",
+      "text-content-secondary hover:bg-white/[0.06] hover:text-white focus:ring-white/20",
   };
 
   const sizes = {

@@ -11,13 +11,13 @@ const LevelsPage: NextPage = () => {
       slug: "ssc",
       title: t("landing.ssc"),
       description: t("landing.sscDesc"),
-      color: "from-sky-500 to-cyan-500",
+      color: "from-primary-700 via-primary-600 to-primary-500",
     },
     {
       slug: "hsc",
       title: t("landing.hsc"),
       description: t("landing.hscDesc"),
-      color: "from-violet-500 to-purple-500",
+      color: "from-[#1A1A1A] via-surface-elevated to-primary-900/80",
     },
   ];
 
@@ -29,10 +29,10 @@ const LevelsPage: NextPage = () => {
       </Head>
 
       <div className="container-page">
-        <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white">
+        <h1 className="mb-4 text-3xl font-extrabold text-white">
           {t("landing.levelsTitle")}
         </h1>
-        <p className="mb-10 text-gray-500 dark:text-gray-400">
+        <p className="mb-10 text-content-muted">
           {t("landing.subtitle")}
         </p>
 
@@ -41,14 +41,14 @@ const LevelsPage: NextPage = () => {
             <Link
               key={level.slug}
               href={`/levels/${level.slug}`}
-              className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br px-8 py-12 text-white shadow-xl shadow-black/10 transition-all duration-200 ${level.color} hover:scale-[1.02] hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-white/40`}
+              className={`level-card bg-gradient-to-br ${level.color} hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary-500/50`}
             >
-              <span className="mb-5 block text-sm font-semibold uppercase tracking-[0.3em] text-slate-900 leading-none">
+              <span className="mb-5 block text-sm font-semibold uppercase tracking-[0.3em] text-primary-300 leading-none">
                 {t("landing.level")}
               </span>
               <h2 className="text-4xl font-extrabold tracking-tight">{level.title}</h2>
-              <p className="mt-4 text-lg text-white/90">{level.description}</p>
-              <div className="mt-8 inline-flex rounded-full bg-white/20 px-4 py-2 text-sm font-semibold text-white/90">
+              <p className="mt-4 text-lg text-content-secondary">{level.description}</p>
+              <div className="mt-8 inline-flex rounded-full border border-white/[0.12] bg-white/[0.06] px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm">
                 {t("landing.start")}
               </div>
             </Link>

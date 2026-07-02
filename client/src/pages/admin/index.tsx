@@ -42,7 +42,7 @@ const AdminPage: NextPage = () => {
       <Layout>
         <div className="container-page text-center">
           <p className="text-red-500">{t("auth.adminRequired")}</p>
-          <Link href="/" className="mt-4 inline-block text-primary-600 underline">
+          <Link href="/" className="link-accent mt-4 inline-block underline">
             {t("nav.home")}
           </Link>
         </div>
@@ -52,7 +52,7 @@ const AdminPage: NextPage = () => {
 
   const statCards = data
     ? [
-        { label: t("admin.totalStudents"), value: data.totalStudents, icon: UsersIcon, color: "text-blue-500" },
+        { label: t("admin.totalStudents"), value: data.totalStudents, icon: UsersIcon, color: "text-primary-400" },
         { label: t("admin.totalExams"), value: data.totalExams, icon: AcademicCapIcon, color: "text-green-500" },
         { label: t("admin.attemptsToday"), value: data.attemptsToday, icon: ClipboardDocumentListIcon, color: "text-yellow-500" },
         { label: t("admin.avgScore"), value: `${data.averageScore}%`, icon: ChartBarIcon, color: "text-purple-500" },
@@ -66,7 +66,7 @@ const AdminPage: NextPage = () => {
           {
             label: "Attempts",
             data: data.attemptsByDay.map((d) => d.count),
-            backgroundColor: "rgba(59, 130, 246, 0.7)",
+            backgroundColor: "rgba(255, 122, 0, 0.7)",
             borderRadius: 6,
           },
         ],
@@ -99,7 +99,7 @@ const AdminPage: NextPage = () => {
 
       <div className="container-page">
         <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-extrabold text-white">
             {t("admin.dashboard")}
           </h1>
           <div className="flex flex-wrap gap-3">
@@ -143,16 +143,16 @@ const AdminPage: NextPage = () => {
             : statCards.map((card) => (
                 <div
                   key={card.label}
-                  className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800"
+                  className="surface-card-hover flex items-center gap-4 p-6"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-50 dark:bg-gray-700">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.06]">
                     <card.icon className={`h-7 w-7 ${card.color}`} aria-hidden="true" />
                   </div>
                   <div>
-                    <p className="text-2xl font-extrabold text-gray-900 dark:text-white">
+                    <p className="text-2xl font-extrabold text-white">
                       {card.value}
                     </p>
-                    <p className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                    <p className="text-xs font-medium text-content-muted">
                       {card.label}
                     </p>
                   </div>
@@ -164,10 +164,10 @@ const AdminPage: NextPage = () => {
         <div className="grid gap-6 lg:grid-cols-2">
           {barData && (
             <section
-              className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800"
+              className="surface-card p-6"
               aria-labelledby="bar-chart-heading"
             >
-              <h2 id="bar-chart-heading" className="mb-4 font-bold text-gray-900 dark:text-white">
+              <h2 id="bar-chart-heading" className="mb-4 font-bold text-white">
                 Daily Attempts (Last 7 Days)
               </h2>
               <Bar
@@ -184,10 +184,10 @@ const AdminPage: NextPage = () => {
 
           {pieData && (
             <section
-              className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800"
+              className="surface-card p-6"
               aria-labelledby="pie-chart-heading"
             >
-              <h2 id="pie-chart-heading" className="mb-4 font-bold text-gray-900 dark:text-white">
+              <h2 id="pie-chart-heading" className="mb-4 font-bold text-white">
                 Score Distribution
               </h2>
               <div className="mx-auto max-w-xs">

@@ -53,8 +53,8 @@ export default function Timer({ totalSeconds, onExpire, paused = false }: TimerP
       className={clsx(
         "flex items-center gap-2 rounded-xl px-4 py-2 font-mono text-lg font-bold tabular-nums",
         isUrgent
-          ? "bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-400 animate-pulse"
-          : "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200"
+          ? "bg-red-500/15 text-red-400 animate-pulse"
+          : "bg-surface-elevated text-content-secondary"
       )}
       role="timer"
       aria-live="polite"

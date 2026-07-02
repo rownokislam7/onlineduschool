@@ -28,23 +28,22 @@ const SignIn: NextPage = () => {
 
       <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-20">
         <div className="w-full max-w-md">
-          <div className="rounded-3xl border border-gray-200 bg-white p-10 shadow-xl dark:border-gray-700 dark:bg-gray-800 animate-slide-up">
-            {/* Logo */}
+          <div className="surface-card animate-slide-up p-10 shadow-glow-sm">
             <div className="mb-8 flex flex-col items-center">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-600">
+              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-600 to-primary-400 shadow-glow-sm">
                 <AcademicCapIcon className="h-10 w-10 text-white" aria-hidden="true" />
               </div>
-              <h1 className="text-2xl font-extrabold text-gray-900 dark:text-white">
+              <h1 className="text-2xl font-extrabold text-white">
                 {t("common.appName")}
               </h1>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              <p className="mt-1 text-sm text-content-muted">
                 {t("common.tagline")}
               </p>
             </div>
 
-            <hr className="mb-8 border-gray-200 dark:border-gray-700" />
+            <hr className="mb-8 border-white/[0.08]" />
 
-            <p className="mb-6 text-center text-sm text-gray-600 dark:text-gray-400">
+            <p className="mb-6 text-center text-sm text-content-secondary">
               {t("auth.signInRequired")}
             </p>
 

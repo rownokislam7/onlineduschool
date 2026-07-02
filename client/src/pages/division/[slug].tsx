@@ -36,7 +36,7 @@ const DivisionPage: NextPage = () => {
       <div className="container-page">
         <Link
           href="/divisions"
-          className="mb-6 inline-flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
+          className="mb-6 inline-flex items-center gap-2 text-sm text-content-muted transition-colors duration-[250ms] hover:text-primary-400"
         >
           <ArrowLeftIcon className="h-4 w-4" aria-hidden="true" />
           {t("common.back")}
@@ -48,10 +48,10 @@ const DivisionPage: NextPage = () => {
 
         {!isLoading && data && (
           <>
-            <h1 className="mb-2 text-3xl font-extrabold text-gray-900 dark:text-white">
+            <h1 className="mb-2 text-3xl font-extrabold text-white">
               {t("division.title", { name: divName })}
             </h1>
-            <p className="mb-10 text-gray-500 dark:text-gray-400">
+            <p className="mb-10 text-content-muted">
               {t("division.subjects")}
             </p>
 

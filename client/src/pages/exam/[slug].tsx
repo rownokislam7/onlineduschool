@@ -116,7 +116,7 @@ const ExamPage: NextPage = () => {
     return (
       <Layout>
         <div className="container-page text-center">
-          <p className="text-gray-500 dark:text-gray-400">{t("common.notFound")}</p>
+          <p className="text-content-muted">{t("common.notFound")}</p>
         </div>
       </Layout>
     );
@@ -129,9 +129,9 @@ const ExamPage: NextPage = () => {
           <title>{exam.title} — {t("common.appName")}</title>
         </Head>
         <div className="container-page flex justify-center">
-          <div className="w-full max-w-xl rounded-2xl border border-gray-200 bg-white p-10 shadow-sm dark:border-gray-700 dark:bg-gray-800 text-center">
-            <h1 className="mb-2 text-2xl font-extrabold text-gray-900 dark:text-white">{exam.title}</h1>
-            <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
+          <div className="surface-card w-full max-w-xl p-10 text-center">
+            <h1 className="mb-2 text-2xl font-extrabold text-white">{exam.title}</h1>
+            <p className="mb-6 text-sm text-content-muted">
               {exam.questions.length} questions · {exam.timeLimitMin} minutes
               {exam.randomize && " · Randomised"}
             </p>
@@ -157,10 +157,10 @@ const ExamPage: NextPage = () => {
       </Head>
 
       {/* Top bar */}
-      <div className="sticky top-16 z-30 border-b border-gray-200 bg-white/90 backdrop-blur dark:border-gray-700 dark:bg-gray-900/90">
+      <div className="sticky top-16 z-30 border-b border-white/[0.08] bg-[#050505]/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
           <div className="flex-1">
-            <p className="text-xs font-medium text-gray-500 dark:text-gray-400">
+            <p className="text-xs font-medium text-content-muted">
               {t("exam.question", { current: currentIdx + 1, total: questions.length })}
             </p>
             <ProgressBar value={progress} />
@@ -192,7 +192,7 @@ const ExamPage: NextPage = () => {
             {t("exam.previous")}
           </Button>
 
-          <span className="text-sm text-gray-500 dark:text-gray-400">
+          <span className="text-sm text-content-muted">
             {answeredCount}/{questions.length} answered
           </span>
 
@@ -223,12 +223,12 @@ const ExamPage: NextPage = () => {
             <button
               key={q.id}
               onClick={() => setCurrentIdx(idx)}
-              className={`h-8 w-8 rounded-full text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+              className={`h-8 w-8 rounded-full text-xs font-semibold transition-all duration-[250ms] focus:outline-none focus:ring-2 focus:ring-primary-500/50 ${
                 idx === currentIdx
-                  ? "bg-primary-600 text-white"
+                  ? "bg-primary-500 text-white shadow-glow-sm"
                   : answers[q.id]
-                  ? "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
-                  : "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400"
+                  ? "border border-green-500/30 bg-green-500/10 text-green-400"
+                  : "border border-white/[0.08] bg-surface-elevated text-content-muted"
               }`}
               aria-label={`Question ${idx + 1}${answers[q.id] ? " (answered)" : ""}`}
               aria-current={idx === currentIdx ? "true" : undefined}
@@ -255,10 +255,10 @@ const ExamPage: NextPage = () => {
           </>
         }
       >
-        <p className="text-sm text-gray-600 dark:text-gray-400">
+        <p className="text-sm text-content-secondary">
           {t("exam.confirmSubmit")}
         </p>
-        <p className="mt-2 text-sm font-medium text-gray-900 dark:text-white">
+        <p className="mt-2 text-sm font-medium text-white">
           {answeredCount} of {questions.length} questions answered.
         </p>
       </Modal>

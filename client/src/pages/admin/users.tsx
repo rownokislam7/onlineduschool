@@ -44,44 +44,44 @@ const AdminUsersPage: NextPage = () => {
         <div className="mb-8">
           <Link
             href="/admin"
-            className="text-sm text-primary-600 hover:underline dark:text-primary-400"
+            className="link-accent text-sm hover:underline"
           >
             ← {t("admin.dashboard")}
           </Link>
-          <h1 className="mt-1 text-2xl font-extrabold text-gray-900 dark:text-white">
+          <h1 className="mt-1 text-2xl font-extrabold text-white">
             {t("admin.users")}
           </h1>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          <p className="mt-1 text-sm text-content-muted">
             Click on any student to view their full exam history.
           </p>
         </div>
 
-        <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 overflow-hidden shadow-sm">
+        <div className="surface-card overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
+              <thead className="border-b border-white/[0.08] bg-surface-secondary">
                 <tr>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">
+                  <th className="px-6 py-3 text-left font-semibold text-white">
                     User
                   </th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">
+                  <th className="px-6 py-3 text-left font-semibold text-white">
                     Email
                   </th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">
+                  <th className="px-6 py-3 text-left font-semibold text-white">
                     Role
                   </th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">
+                  <th className="px-6 py-3 text-left font-semibold text-white">
                     Exams Taken
                   </th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">
+                  <th className="px-6 py-3 text-left font-semibold text-white">
                     Joined
                   </th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">
+                  <th className="px-6 py-3 text-left font-semibold text-white">
                     History
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+              <tbody className="divide-y divide-white/[0.06]">
                 {isLoading
                   ? [1, 2, 3].map((i) => (
                       <tr key={i}>
@@ -93,7 +93,7 @@ const AdminUsersPage: NextPage = () => {
                   : users?.map((u) => (
                       <tr
                         key={u.id}
-                        className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
+                        className="transition-colors duration-[250ms] hover:bg-white/[0.03]"
                       >
                         {/* User */}
                         <td className="px-6 py-4">
@@ -107,16 +107,16 @@ const AdminUsersPage: NextPage = () => {
                                 className="rounded-full flex-shrink-0"
                               />
                             ) : (
-                              <UserCircleIcon className="h-9 w-9 flex-shrink-0 text-gray-300 dark:text-gray-600" />
+                              <UserCircleIcon className="h-9 w-9 flex-shrink-0 text-content-muted" />
                             )}
-                            <span className="font-semibold text-gray-900 dark:text-white">
+                            <span className="font-semibold text-white">
                               {u.name}
                             </span>
                           </div>
                         </td>
 
                         {/* Email */}
-                        <td className="px-6 py-4 text-gray-500 dark:text-gray-400">{u.email}</td>
+                        <td className="px-6 py-4 text-content-muted">{u.email}</td>
 
                         {/* Role */}
                         <td className="px-6 py-4">
@@ -125,8 +125,8 @@ const AdminUsersPage: NextPage = () => {
 
                         {/* Attempts count */}
                         <td className="px-6 py-4">
-                          <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-300">
-                            <ClipboardDocumentListIcon className="h-4 w-4 text-gray-400" />
+                          <div className="flex items-center gap-1.5 text-content-secondary">
+                            <ClipboardDocumentListIcon className="h-4 w-4 text-content-muted" />
                             <span className="font-medium">
                               {(u as User & { _count?: { attempts: number } })._count?.attempts ?? 0}
                             </span>
@@ -134,7 +134,7 @@ const AdminUsersPage: NextPage = () => {
                         </td>
 
                         {/* Joined */}
-                        <td className="px-6 py-4 text-gray-500 dark:text-gray-400">
+                        <td className="px-6 py-4 text-content-muted">
                           {u.createdAt
                             ? new Date(u.createdAt).toLocaleDateString("en-BD", {
                                 dateStyle: "medium",
@@ -146,7 +146,7 @@ const AdminUsersPage: NextPage = () => {
                         <td className="px-6 py-4">
                           <Link
                             href={`/admin/students/${u.id}`}
-                            className="inline-flex items-center gap-1.5 rounded-lg border border-primary-200 bg-primary-50 px-3 py-1.5 text-xs font-semibold text-primary-700 hover:bg-primary-100 transition-colors dark:border-primary-800 dark:bg-primary-900/20 dark:text-primary-400 dark:hover:bg-primary-900/40"
+                            className="btn-secondary px-3 py-1.5 text-xs"
                           >
                             View History
                             <ChevronRightIcon className="h-3.5 w-3.5" />

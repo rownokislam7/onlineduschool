@@ -54,7 +54,7 @@ const ResultPage: NextPage = () => {
       <Layout>
         <div className="container-page text-center">
           <p className="text-red-500">{t("common.error")}</p>
-          <Link href="/" className="mt-4 inline-block text-primary-600 underline">
+          <Link href="/" className="link-accent mt-4 inline-block underline">
             {t("nav.home")}
           </Link>
         </div>
@@ -89,7 +89,7 @@ const ResultPage: NextPage = () => {
 
       <div className="container-page">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-extrabold text-white">
             {ownerName ? t("result.ownerTitle", { name: ownerName }) : t("result.title")}
           </h1>
           <div className="flex gap-3">
@@ -119,18 +119,18 @@ const ResultPage: NextPage = () => {
         <section className="mt-10" aria-labelledby="review-heading">
           <h2
             id="review-heading"
-            className="mb-6 text-2xl font-bold text-gray-900 dark:text-white"
+            className="mb-6 text-2xl font-bold text-white"
           >
             Question Review
           </h2>
-          <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
+          <p className="mb-6 text-sm text-content-muted">
             {selectedFilter === "all"
               ? t("result.showingAll")
               : t(`result.showing${selectedFilter.charAt(0).toUpperCase() + selectedFilter.slice(1)}`)}
           </p>
           <div className="space-y-6">
             {filteredQuestions.length === 0 ? (
-              <p className="rounded-2xl border border-dashed border-gray-300 bg-white p-6 text-center text-gray-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400">
+              <p className="rounded-2xl border border-dashed border-white/[0.12] bg-surface p-6 text-center text-content-muted">
                 {t("result.noMatchingQuestions")}
               </p>
             ) : (

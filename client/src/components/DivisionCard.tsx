@@ -38,7 +38,7 @@ export default function DivisionCard({ division }: DivisionCardProps) {
       href={`/division/${division.slug}`}
       className={clsx(
         "group relative flex flex-col items-center justify-center rounded-2xl bg-gradient-to-br p-8 text-white shadow-lg transition-all duration-200",
-        "hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-primary-500",
+        "hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50",
         gradient
       )}
       aria-label={`${displayName} division`}

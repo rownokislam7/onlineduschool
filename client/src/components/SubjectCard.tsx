@@ -24,7 +24,7 @@ export default function SubjectCard({ subject }: SubjectCardProps) {
       className={clsx(
         "group flex items-center gap-4 rounded-xl bg-gradient-to-br p-5 shadow-sm text-white",
         gradient,
-        "hover:shadow-md transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-primary-500"
+        "hover:shadow-md transition-all duration-[250ms] focus:outline-none focus:ring-2 focus:ring-primary-500/50"
       )}
     >
       <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-white/20 text-white">

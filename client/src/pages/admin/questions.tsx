@@ -80,11 +80,11 @@ const AdminQuestionsPage: NextPage = () => {
           <div>
             <Link
               href="/admin"
-              className="text-sm text-primary-600 hover:underline dark:text-primary-400"
+              className="link-accent text-sm hover:underline"
             >
               ← {t("admin.dashboard")}
             </Link>
-            <h1 className="mt-1 text-2xl font-extrabold text-gray-900 dark:text-white">
+            <h1 className="mt-1 text-2xl font-extrabold text-white">
               {t("admin.questions")}
             </h1>
           </div>
@@ -94,10 +94,10 @@ const AdminQuestionsPage: NextPage = () => {
           </Button>
         </div>
 
-        <div className="rounded-2xl border border-dashed border-gray-300 bg-white p-12 text-center dark:border-gray-600 dark:bg-gray-800">
-          <p className="text-gray-500 dark:text-gray-400">
+        <div className="rounded-2xl border border-dashed border-white/[0.12] bg-surface p-12 text-center">
+          <p className="text-content-muted">
             Use the form to add questions to any exam, or use{" "}
-            <Link href="/admin/exams" className="text-primary-600 underline dark:text-primary-400">
+            <Link href="/admin/exams" className="link-accent underline">
               Bulk CSV Import
             </Link>{" "}
             on the Exams page to add many at once.
@@ -122,34 +122,34 @@ const AdminQuestionsPage: NextPage = () => {
       >
         <form id="add-question-form" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="mb-1 block text-xs font-medium text-content-secondary">
               Exam Slug *
             </label>
             <input
               {...register("examSlug", { required: true })}
               placeholder="e.g. physics-chapter-1-mcq"
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              className="input-field"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="mb-1 block text-xs font-medium text-content-secondary">
                 Order *
               </label>
               <input
                 type="number"
                 {...register("order")}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="input-field"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="mb-1 block text-xs font-medium text-content-secondary">
                 Type *
               </label>
               <select
                 {...register("type")}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="input-field"
               >
                 <option value="MCQ">MCQ</option>
                 <option value="TRUE_FALSE">True / False</option>
@@ -159,25 +159,25 @@ const AdminQuestionsPage: NextPage = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="mb-1 block text-xs font-medium text-content-secondary">
               Question Text *
             </label>
             <textarea
               {...register("text", { required: true })}
               rows={3}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              className="input-field"
             />
           </div>
 
           {(questionType === "MCQ" || questionType === "TRUE_FALSE") && (
             <div className="space-y-2">
-              <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
+              <label className="block text-xs font-medium text-content-secondary">
                 Options
               </label>
               {questionType === "TRUE_FALSE" ? (
                 <>
-                  <input value="True" disabled className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm bg-gray-50 dark:bg-gray-700 dark:text-white" />
-                  <input value="False" disabled className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm bg-gray-50 dark:bg-gray-700 dark:text-white" />
+                  <input value="True" disabled className="input-field opacity-70" />
+                  <input value="False" disabled className="input-field opacity-70" />
                 </>
               ) : (
                 ["option0", "option1", "option2", "option3"].map((opt, i) => (
@@ -185,7 +185,7 @@ const AdminQuestionsPage: NextPage = () => {
                     key={opt}
                     {...register(opt as keyof QuestionFormData)}
                     placeholder={`Option ${i + 1}`}
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                    className="input-field"
                   />
                 ))
               )}
@@ -194,23 +194,23 @@ const AdminQuestionsPage: NextPage = () => {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="mb-1 block text-xs font-medium text-content-secondary">
                 Correct Answer
               </label>
               <input
                 {...register("correct")}
                 placeholder={questionType === "SHORT_ANSWER" ? "Keyword" : "0, 1, 2 or 3"}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="input-field"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="mb-1 block text-xs font-medium text-content-secondary">
                 Marks
               </label>
               <input
                 type="number"
                 {...register("marks")}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="input-field"
               />
             </div>
           </div>

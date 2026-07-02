@@ -131,10 +131,10 @@ const AdminSubjectsPage: NextPage = () => {
       <div className="container-page">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <Link href="/admin" className="text-sm text-primary-600 hover:underline dark:text-primary-400">
+            <Link href="/admin" className="link-accent text-sm hover:underline">
               ← {t("admin.dashboard")}
             </Link>
-            <h1 className="mt-1 text-2xl font-extrabold text-gray-900 dark:text-white">
+            <h1 className="mt-1 text-2xl font-extrabold text-white">
               {t("admin.subjects")}
             </h1>
           </div>
@@ -144,30 +144,30 @@ const AdminSubjectsPage: NextPage = () => {
           </Button>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div className="surface-card overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="border-b border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-700/50">
+              <thead className="border-b border-white/[0.08] bg-surface-secondary">
                 <tr>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">Slug</th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">Name</th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">Type</th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">Division / Level</th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">Color</th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900 dark:text-white">Actions</th>
+                  <th className="px-6 py-3 text-left font-semibold text-white">Slug</th>
+                  <th className="px-6 py-3 text-left font-semibold text-white">Name</th>
+                  <th className="px-6 py-3 text-left font-semibold text-white">Type</th>
+                  <th className="px-6 py-3 text-left font-semibold text-white">Division / Level</th>
+                  <th className="px-6 py-3 text-left font-semibold text-white">Color</th>
+                  <th className="px-6 py-3 text-left font-semibold text-white">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {isLoading && (
                   <tr>
-                    <td colSpan={6} className="px-6 py-10 text-center text-gray-500">
+                    <td colSpan={6} className="px-6 py-10 text-center text-content-muted">
                       <Skeleton className="h-6" />
                     </td>
                   </tr>
                 )}
                 {!isLoading && subjects?.length === 0 && (
                   <tr>
-                    <td colSpan={6} className="px-6 py-10 text-center text-gray-500">
+                    <td colSpan={6} className="px-6 py-10 text-center text-content-muted">
                       {t("common.noResults")}
                     </td>
                   </tr>
@@ -175,16 +175,16 @@ const AdminSubjectsPage: NextPage = () => {
                 {subjects?.map((subject) => {
                   const division = divisions?.find((div) => div.id === subject.divisionId);
                   return (
-                    <tr key={subject.id} className="border-b border-gray-100 dark:border-gray-700 last:border-none">
-                      <td className="px-6 py-4 font-mono text-xs text-gray-600 dark:text-gray-300">{subject.slug}</td>
-                      <td className="px-6 py-4 text-gray-900 dark:text-white">{subject.name}</td>
+                    <tr key={subject.id} className="border-b border-white/[0.05] last:border-none transition-colors duration-[250ms] hover:bg-white/[0.03]">
+                      <td className="px-6 py-4 font-mono text-xs text-content-muted">{subject.slug}</td>
+                      <td className="px-6 py-4 text-white">{subject.name}</td>
                       <td className="px-6 py-4">
                         {subject.isCommon ? <Badge variant="gray">Common</Badge> : <Badge variant="blue">Division</Badge>}
                       </td>
-                      <td className="px-6 py-4 text-gray-500 dark:text-gray-400">
+                      <td className="px-6 py-4 text-content-muted">
                         {subject.isCommon ? subject.level : division?.name ?? "—"}
                       </td>
-                      <td className="px-6 py-4 text-gray-500 dark:text-gray-400">
+                      <td className="px-6 py-4 text-content-muted">
                         <span className={clsx(
                           "inline-flex items-center rounded-full px-2 py-1 text-xs font-semibold text-white",
                           subject.color === "violet" && "bg-violet-500",
@@ -202,12 +202,12 @@ const AdminSubjectsPage: NextPage = () => {
                           {subject.color ? COLOR_DISPLAY[subject.color] : "default"}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-gray-500 dark:text-gray-400">
+                      <td className="px-6 py-4 text-content-muted">
                         <div className="flex items-center gap-2">
                           <button
                             type="button"
                             onClick={() => openEdit(subject)}
-                            className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-primary-600 dark:hover:bg-gray-700"
+                          className="rounded-lg p-2 text-content-muted transition-colors duration-[250ms] hover:bg-white/[0.06] hover:text-primary-400"
                             aria-label="Edit subject"
                           >
                             <PencilSquareIcon className="h-4 w-4" />
@@ -248,50 +248,50 @@ const AdminSubjectsPage: NextPage = () => {
       >
         <form id="subject-form" onSubmit={handleSubmit(submitSubject)} className="space-y-4">
           <div>
-            <label htmlFor="slug" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="slug" className="mb-1 block text-xs font-medium text-content-secondary">
               Slug *
             </label>
             <input
               id="slug"
               {...register("slug", { required: true, pattern: /^[a-z0-9-]+$/ })}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              className="input-field"
             />
           </div>
           <div>
-            <label htmlFor="name" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="name" className="mb-1 block text-xs font-medium text-content-secondary">
               Name *
             </label>
             <input
               id="name"
               {...register("name", { required: true })}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              className="input-field"
             />
           </div>
           <div>
-            <label htmlFor="namebn" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="namebn" className="mb-1 block text-xs font-medium text-content-secondary">
               Name (Bangla)
             </label>
             <input
               id="namebn"
               {...register("namebn")}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              className="input-field"
             />
           </div>
           <div className="flex items-center gap-3">
-            <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+            <label className="flex items-center gap-2 text-sm text-content-secondary">
               <input type="checkbox" {...register("isCommon")} className="rounded" />
               Common subject
             </label>
           </div>
           {isCommon ? (
             <div>
-              <label htmlFor="level" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label htmlFor="level" className="mb-1 block text-xs font-medium text-content-secondary">
                 Level *
               </label>
               <select
                 id="level"
                 {...register("level", { required: true })}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="input-field"
               >
                 <option value="SSC">SSC</option>
                 <option value="HSC">HSC</option>
@@ -299,13 +299,13 @@ const AdminSubjectsPage: NextPage = () => {
             </div>
           ) : (
             <div>
-              <label htmlFor="divisionId" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label htmlFor="divisionId" className="mb-1 block text-xs font-medium text-content-secondary">
                 Division *
               </label>
               <select
                 id="divisionId"
                 {...register("divisionId", { required: !isCommon })}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="input-field"
               >
                 <option value="">Select Division</option>
                 {divisions?.map((division) => (
@@ -317,7 +317,7 @@ const AdminSubjectsPage: NextPage = () => {
             </div>
           )}
           <div>
-            <p className="mb-2 text-xs font-medium text-gray-700 dark:text-gray-300">
+            <p className="mb-2 text-xs font-medium text-content-secondary">
               Card color *
             </p>
             <fieldset className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -326,7 +326,7 @@ const AdminSubjectsPage: NextPage = () => {
                   key={option.value}
                   className={clsx(
                     "cursor-pointer rounded-2xl border p-3 text-center shadow-sm transition-all",
-                    "border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900",
+                    "border-white/[0.08] bg-surface-secondary",
                     "peer-checked:border-primary-600 peer-checked:ring-2 peer-checked:ring-primary-500",
                     option.value === "emerald" && "text-white",
                     option.value === "violet" && "text-white",

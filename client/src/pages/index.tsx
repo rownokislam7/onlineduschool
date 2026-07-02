@@ -8,8 +8,8 @@ import Layout from "@/components/Layout";
 const Home: NextPage = () => {
   const { t } = useTranslation();
   const levels = [
-    { slug: "ssc", title: t("landing.ssc"), description: t("landing.sscDesc"), color: "from-sky-500 to-cyan-500" },
-    { slug: "hsc", title: t("landing.hsc"), description: t("landing.hscDesc"), color: "from-violet-500 to-purple-500" },
+    { slug: "ssc", title: t("landing.ssc"), description: t("landing.sscDesc"), color: "from-primary-700 via-primary-600 to-primary-500" },
+    { slug: "hsc", title: t("landing.hsc"), description: t("landing.hscDesc"), color: "from-[#1A1A1A] via-surface-elevated to-primary-900/80" },
   ];
 
   const features = [
@@ -39,7 +39,6 @@ const Home: NextPage = () => {
         <meta property="og:description" content={t("landing.subtitle")} />
       </Head>
 
-      {/* Hero */}
       <section
         className="relative overflow-hidden px-4 py-24 text-white"
         aria-labelledby="hero-heading"
@@ -51,39 +50,25 @@ const Home: NextPage = () => {
           >
             {t("landing.hero")}
           </h1>
-          <p className="mt-6 text-lg text-primary-100 sm:text-xl">
+          <p className="mt-6 text-lg text-content-secondary sm:text-xl">
             {t("landing.subtitle")}
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Link
-              href="/levels"
-              className="button-29 w-full sm:w-auto"
-            >
+            <Link href="/levels" className="button-29 w-full sm:w-auto">
               {t("landing.cta")}
             </Link>
-            <Link
-              href="/auth/signin"
-              className="button-29 w-full sm:w-auto"
-            >
+            <Link href="/auth/signin" className="button-30 w-full sm:w-auto">
               {t("nav.signIn")}
             </Link>
           </div>
         </div>
-        {/* Decorative circles */}
-        <div className="pointer-events-none absolute -top-20 -right-20 h-72 w-72 rounded-full bg-white/5" aria-hidden="true" />
-        <div className="pointer-events-none absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-white/5" aria-hidden="true" />
+        <div className="hero-decor-circle absolute -right-20 -top-20 h-72 w-72" aria-hidden="true" />
+        <div className="hero-decor-circle absolute -bottom-10 -left-10 h-48 w-48" aria-hidden="true" />
       </section>
 
-      {/* Academic levels */}
-      <section
-        className="bg-transparent py-20"
-        aria-labelledby="levels-heading"
-      >
+      <section className="bg-transparent py-20" aria-labelledby="levels-heading">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2
-            id="levels-heading"
-            className="mb-10 text-center text-3xl font-bold text-white"
-          >
+          <h2 id="levels-heading" className="mb-10 text-center text-3xl font-bold text-white">
             {t("landing.levelsTitle")}
           </h2>
           <div className="grid gap-6 md:grid-cols-2">
@@ -91,15 +76,15 @@ const Home: NextPage = () => {
               <Link
                 key={level.slug}
                 href={`/levels/${level.slug}`}
-                className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br px-8 py-12 text-white shadow-xl shadow-black/10 transition-all duration-200 ${level.color} hover:scale-[1.02] hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-white/40`}
+                className={`level-card bg-gradient-to-br ${level.color} hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary-500/50`}
                 aria-label={`Choose ${level.title}`}
               >
-                <span className="mb-5 block text-sm font-semibold uppercase tracking-[0.3em] text-slate-900 leading-none">
+                <span className="mb-5 block text-sm font-semibold uppercase tracking-[0.3em] text-primary-300 leading-none">
                   {t("landing.level")}
                 </span>
                 <h3 className="text-4xl font-extrabold tracking-tight">{level.title}</h3>
-                <p className="mt-4 max-w-xl text-lg text-white/90">{level.description}</p>
-                <div className="mt-8 inline-flex rounded-full bg-white/20 px-4 py-2 text-sm font-semibold text-white/90">
+                <p className="mt-4 max-w-xl text-lg text-content-secondary">{level.description}</p>
+                <div className="mt-8 inline-flex rounded-full border border-white/[0.12] bg-white/[0.06] px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm">
                   {t("landing.start")}
                 </div>
               </Link>
@@ -108,31 +93,19 @@ const Home: NextPage = () => {
         </div>
       </section>
 
-      {/* Features */}
-      <section
-        className="bg-transparent py-20"
-        aria-labelledby="features-heading"
-      >
+      <section className="bg-transparent py-20" aria-labelledby="features-heading">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2
-            id="features-heading"
-            className="mb-12 text-center text-3xl font-bold text-white"
-          >
+          <h2 id="features-heading" className="mb-12 text-center text-3xl font-bold text-white">
             {t("landing.featuresTitle")}
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
             {features.map((f) => (
-              <div
-                key={f.title}
-                className="flex flex-col items-center rounded-2xl bg-white/5 p-8 text-center backdrop-blur-sm"
-              >
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-100/30">
-                  <f.icon className="h-8 w-8 text-primary-200" aria-hidden="true" />
+              <div key={f.title} className="feature-card">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-500/15">
+                  <f.icon className="h-8 w-8 text-primary-400" aria-hidden="true" />
                 </div>
-                <h3 className="mb-2 text-lg font-bold text-white">
-                  {f.title}
-                </h3>
-                <p className="text-sm text-white/80">{f.desc}</p>
+                <h3 className="mb-2 text-lg font-bold text-white">{f.title}</h3>
+                <p className="text-sm text-content-muted">{f.desc}</p>
               </div>
             ))}
           </div>
