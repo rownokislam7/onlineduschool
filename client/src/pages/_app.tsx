@@ -11,9 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider>
       <AuthProvider>
         <AppBackground />
-        <div className="relative z-[1]">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
         <Toaster
           position="top-right"
           toastOptions={{

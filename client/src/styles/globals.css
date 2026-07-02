@@ -20,10 +20,10 @@
     --text-muted: #9a9a9a;
     --bg-gradient-start: #090909;
     --bg-gradient-end: #050505;
-    --bg-accent-subtle: rgba(255, 122, 0, 0.05);
-    --bg-accent-glow: rgba(255, 122, 0, 0.045);
-    --bg-accent-mesh: rgba(255, 122, 0, 0.028);
-    --bg-accent-aurora: rgba(255, 122, 0, 0.05);
+    --bg-accent-subtle: rgba(255, 122, 0, 0.09);
+    --bg-accent-glow: rgba(255, 122, 0, 0.08);
+    --bg-accent-mesh: rgba(255, 122, 0, 0.045);
+    --bg-accent-aurora: rgba(255, 122, 0, 0.07);
   }
 
   .dark {
@@ -34,11 +34,12 @@
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
+    background-color: var(--bg-gradient-end);
   }
 
   body {
     @apply antialiased;
-    background-color: var(--surface-primary);
+    background-color: transparent;
     color: var(--text-primary);
   }
 
@@ -429,10 +430,9 @@
   .app-background {
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
     overflow: hidden;
-    isolation: isolate;
   }
 
   .app-background__layer {
@@ -451,11 +451,17 @@
   /* Layer 2 — ultra-soft ambient orange glow */
   .app-background__layer--glow {
     inset: -25%;
-    background: radial-gradient(
-      ellipse 70% 55% at 50% -5%,
-      var(--bg-accent-glow) 0%,
-      transparent 65%
-    );
+    background:
+      radial-gradient(
+        ellipse 70% 55% at 50% -5%,
+        var(--bg-accent-glow) 0%,
+        transparent 65%
+      ),
+      radial-gradient(
+        ellipse 50% 40% at 85% 90%,
+        rgba(255, 122, 0, 0.04) 0%,
+        transparent 60%
+      );
     will-change: transform, opacity;
     animation: app-bg-glow-drift 45s ease-in-out infinite alternate;
   }
@@ -465,8 +471,8 @@
     inset: -40%;
     background:
       radial-gradient(ellipse 42% 32% at 18% 28%, var(--bg-accent-mesh) 0%, transparent 55%),
-      radial-gradient(ellipse 38% 42% at 82% 68%, rgba(255, 100, 0, 0.022) 0%, transparent 55%),
-      radial-gradient(ellipse 48% 36% at 58% 18%, rgba(255, 140, 0, 0.018) 0%, transparent 55%);
+      radial-gradient(ellipse 38% 42% at 82% 68%, rgba(255, 100, 0, 0.035) 0%, transparent 55%),
+      radial-gradient(ellipse 48% 36% at 58% 18%, rgba(255, 140, 0, 0.03) 0%, transparent 55%);
     filter: blur(48px);
     will-change: transform;
     animation: app-bg-mesh-flow 60s ease-in-out infinite alternate;
@@ -475,7 +481,7 @@
   /* Layer 4 — faint diagonal streaks + grain */
   .app-background__layer--texture {
     inset: 0;
-    opacity: 0.025;
+    opacity: 0.035;
     background-image:
       repeating-linear-gradient(
         128deg,
@@ -519,7 +525,7 @@
   /* Optional — barely visible grid */
   .app-background__layer--grid {
     inset: 0;
-    opacity: 0.018;
+    opacity: 0.022;
     background-image:
       linear-gradient(rgba(255, 255, 255, 0.45) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.45) 1px, transparent 1px);
