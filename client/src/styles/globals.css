@@ -536,7 +536,7 @@
 
   .app-background__layer--motifs {
     inset: 0;
-    opacity: 0.92;
+    opacity: 1;
     overflow: visible;
     isolation: isolate;
   }
@@ -544,91 +544,61 @@
   .motif {
     position: absolute;
     display: block;
-    width: clamp(64px, 7vw, 140px);
+    width: clamp(48px, 6vw, 96px);
     height: auto;
-    will-change: transform, opacity;
+    will-change: transform;
     transform-origin: center center;
     pointer-events: none;
   }
 
-  .motif--atom {
-    width: clamp(82px, 8vw, 140px);
-  }
-
-  .motif--cap {
-    width: clamp(62px, 6vw, 120px);
-  }
-
-  .motif--binary {
-    width: clamp(64px, 5vw, 120px);
-  }
-
-  .motif--book {
-    width: clamp(82px, 7vw, 132px);
-  }
-
-  .motif svg {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
   .motif--formula {
     position: absolute;
-    top: 10%;
-    left: 8%;
+    top: 8%;
+    left: 6%;
     animation: motif-float-formulas 64s ease-in-out infinite;
     transform-origin: center center;
-    opacity: 0.62;
   }
 
   .motif--formula--2 {
     top: 16%;
     left: 74%;
     animation-delay: -12s;
-    opacity: 0.34;
   }
 
   .motif--formula--3 {
     top: 28%;
     left: 10%;
     animation-delay: -28s;
-    opacity: 0.38;
   }
 
   .motif--formula--4 {
     top: 44%;
     left: 72%;
     animation-delay: -18s;
-    opacity: 0.3;
   }
 
   .motif--formula--5 {
     top: 58%;
     left: 8%;
     animation-delay: -36s;
-    opacity: 0.33;
   }
 
   .motif--formula--6 {
     top: 70%;
     left: 68%;
     animation-delay: -24s;
-    opacity: 0.3;
   }
 
   .motif--formula--7 {
     top: 82%;
     left: 16%;
     animation-delay: -46s;
-    opacity: 0.28;
   }
 
   .motif--formula--8 {
     top: 84%;
     left: 78%;
     animation-delay: -54s;
-    opacity: 0.26;
   }
 
   .motif--circuit {
@@ -637,22 +607,18 @@
     left: 82%;
     animation: motif-drift-circuits 76s ease-in-out infinite;
     transform-origin: center center;
-    opacity: 0.44;
-    filter: drop-shadow(0 0 3px rgba(255, 122, 0, 0.18));
   }
 
   .motif--circuit--2 {
     top: 20%;
     left: 80%;
     animation-delay: -22s;
-    opacity: 0.24;
   }
 
   .motif--circuit--3 {
     top: 84%;
     left: 8%;
     animation-delay: -40s;
-    opacity: 0.24;
   }
 
   .motif--book {
@@ -661,28 +627,24 @@
     left: 32%;
     animation: motif-bob-books 48s ease-in-out infinite;
     transform-origin: center center;
-    opacity: 0.42;
   }
 
   .motif--book--2 {
     top: 30%;
     left: 18%;
     animation-delay: -18s;
-    opacity: 0.24;
   }
 
   .motif--book--3 {
     top: 74%;
     left: 36%;
     animation-delay: -10s;
-    opacity: 0.24;
   }
 
   .motif--book--4 {
     top: 80%;
     left: 68%;
     animation-delay: -24s;
-    opacity: 0.22;
   }
 
   .motif--cap {
@@ -691,28 +653,24 @@
     left: 48%;
     animation: motif-sway-caps 52s ease-in-out infinite;
     transform-origin: center center;
-    opacity: 0.38;
   }
 
   .motif--cap--2 {
     top: 68%;
     left: 46%;
     animation-delay: -14s;
-    opacity: 0.2;
   }
 
   .motif--cap--3 {
     top: 26%;
     left: 56%;
     animation-delay: -28s;
-    opacity: 0.2;
   }
 
   .motif--cap--4 {
     top: 76%;
     left: 56%;
     animation-delay: -40s;
-    opacity: 0.18;
   }
 
   .motif--atom {
@@ -721,21 +679,18 @@
     left: 44%;
     animation: motif-spin-atoms 34s linear infinite;
     transform-origin: center center;
-    opacity: 0.4;
   }
 
   .motif--atom--2 {
     top: 52%;
     left: 66%;
     animation-delay: -12s;
-    opacity: 0.2;
   }
 
   .motif--atom--3 {
     top: 66%;
     left: 24%;
     animation-delay: -20s;
-    opacity: 0.2;
   }
 
   .motif--binary {
@@ -744,35 +699,30 @@
     left: 24%;
     animation: motif-rain-binary 96s linear infinite;
     transform-origin: center center;
-    opacity: 0.32;
   }
 
   .motif--binary--2 {
     top: 40%;
     left: 14%;
     animation-delay: -18s;
-    opacity: 0.16;
   }
 
   .motif--binary--3 {
     top: 68%;
     left: 14%;
     animation-delay: -36s;
-    opacity: 0.16;
   }
 
   .motif--binary--4 {
     top: 22%;
     left: 40%;
     animation-delay: -56s;
-    opacity: 0.16;
   }
 
   .motif--binary--5 {
     top: 86%;
     left: 44%;
     animation-delay: -72s;
-    opacity: 0.14;
   }
 
   .motif--node {
@@ -781,21 +731,18 @@
     left: 48%;
     animation: motif-pulse-nodes 4s ease-in-out infinite;
     transform-origin: center center;
-    opacity: 0.38;
   }
 
   .motif--node--2 {
     top: 58%;
     left: 56%;
     animation-delay: -1s;
-    opacity: 0.2;
   }
 
   .motif--node--3 {
     top: 78%;
     left: 62%;
     animation-delay: -2s;
-    opacity: 0.18;
   }
 
   @keyframes app-bg-glow-drift {
@@ -844,11 +791,9 @@
     0%,
     100% {
       transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-      opacity: 0.42;
     }
     50% {
       transform: translate3d(0.8%, -0.7%, 0) rotate(-5deg) scale(1.03);
-      opacity: 0.54;
     }
   }
 
@@ -856,11 +801,9 @@
     0%,
     100% {
       transform: translate3d(0, 0, 0) rotate(0deg);
-      opacity: 0.28;
     }
     50% {
       transform: translate3d(-0.8%, 0.8%, 0) rotate(3deg);
-      opacity: 0.36;
     }
   }
 
@@ -868,11 +811,9 @@
     0%,
     100% {
       transform: translate3d(0, 0, 0) rotate(-4deg) scale(1);
-      opacity: 0.24;
     }
     50% {
       transform: translate3d(0.6%, -0.4%, 0) rotate(4deg) scale(1.02);
-      opacity: 0.3;
     }
   }
 
@@ -880,31 +821,28 @@
     0%,
     100% {
       transform: translate3d(0, 0, 0) rotate(0deg);
-      opacity: 0.24;
     }
     50% {
       transform: translate3d(-0.5%, 0.6%, 0) rotate(-6deg);
-      opacity: 0.3;
     }
   }
 
   @keyframes motif-spin-atoms {
-    0% {
-      transform: translate3d(0, 0, 0) rotate(0deg);
-    }
+    0%,
     100% {
-      transform: translate3d(0.4%, 0.2%, 0) rotate(360deg);
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(0.3%, -0.3%, 0) scale(1.02);
     }
   }
 
   @keyframes motif-rain-binary {
     0% {
       transform: translate3d(0, -2%, 0) rotate(-5deg);
-      opacity: 0.16;
     }
     100% {
       transform: translate3d(0, 16%, 0) rotate(5deg);
-      opacity: 0.22;
     }
   }
 
@@ -912,11 +850,9 @@
     0%,
     100% {
       transform: translate3d(0, 0, 0) scale(1);
-      opacity: 0.18;
     }
     50% {
       transform: translate3d(0.3%, -0.3%, 0) scale(1.06);
-      opacity: 0.36;
     }
   }
 
@@ -959,17 +895,16 @@
     }
 
     .app-background__layer--motifs {
-      opacity: 0.45;
+      opacity: 0.7;
     }
 
     .motif {
-      opacity: 0.3;
       transform: none !important;
     }
   }
 
   .exam-page .app-background__layer--motifs {
-    opacity: 0.35;
+    opacity: 0.55;
   }
 
   .feature-card {

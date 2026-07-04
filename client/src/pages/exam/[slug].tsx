@@ -152,10 +152,10 @@ const ExamPage: NextPage = () => {
 
   return (
     <Layout hideFooter>
+      <Head>
+        <title>{exam.title} — {t("common.appName")}</title>
+      </Head>
       <div className="exam-page">
-        <Head>
-          <title>{exam.title} — {t("common.appName")}</title>
-        </Head>
 
         {/* Top bar */}
         <div className="sticky top-16 z-30 border-b border-white/[0.08] bg-[#050505]/80 backdrop-blur-md">
