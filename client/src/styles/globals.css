@@ -536,7 +536,7 @@
 
   .app-background__layer--motifs {
     inset: 0;
-    opacity: 0.72;
+    opacity: 0.92;
     overflow: visible;
     isolation: isolate;
   }
@@ -544,11 +544,27 @@
   .motif {
     position: absolute;
     display: block;
-    width: clamp(48px, 6vw, 96px);
+    width: clamp(64px, 7vw, 140px);
     height: auto;
     will-change: transform, opacity;
     transform-origin: center center;
     pointer-events: none;
+  }
+
+  .motif--atom {
+    width: clamp(82px, 8vw, 140px);
+  }
+
+  .motif--cap {
+    width: clamp(62px, 6vw, 120px);
+  }
+
+  .motif--binary {
+    width: clamp(64px, 5vw, 120px);
+  }
+
+  .motif--book {
+    width: clamp(82px, 7vw, 132px);
   }
 
   .motif svg {
@@ -559,11 +575,11 @@
 
   .motif--formula {
     position: absolute;
-    top: 8%;
-    left: 6%;
+    top: 10%;
+    left: 8%;
     animation: motif-float-formulas 64s ease-in-out infinite;
     transform-origin: center center;
-    opacity: 0.42;
+    opacity: 0.62;
   }
 
   .motif--formula--2 {
@@ -621,7 +637,8 @@
     left: 82%;
     animation: motif-drift-circuits 76s ease-in-out infinite;
     transform-origin: center center;
-    opacity: 0.28;
+    opacity: 0.44;
+    filter: drop-shadow(0 0 3px rgba(255, 122, 0, 0.18));
   }
 
   .motif--circuit--2 {
@@ -644,7 +661,7 @@
     left: 32%;
     animation: motif-bob-books 48s ease-in-out infinite;
     transform-origin: center center;
-    opacity: 0.28;
+    opacity: 0.42;
   }
 
   .motif--book--2 {
@@ -674,7 +691,7 @@
     left: 48%;
     animation: motif-sway-caps 52s ease-in-out infinite;
     transform-origin: center center;
-    opacity: 0.24;
+    opacity: 0.38;
   }
 
   .motif--cap--2 {
@@ -704,7 +721,7 @@
     left: 44%;
     animation: motif-spin-atoms 34s linear infinite;
     transform-origin: center center;
-    opacity: 0.24;
+    opacity: 0.4;
   }
 
   .motif--atom--2 {
@@ -727,7 +744,7 @@
     left: 24%;
     animation: motif-rain-binary 96s linear infinite;
     transform-origin: center center;
-    opacity: 0.22;
+    opacity: 0.32;
   }
 
   .motif--binary--2 {
@@ -764,7 +781,7 @@
     left: 48%;
     animation: motif-pulse-nodes 4s ease-in-out infinite;
     transform-origin: center center;
-    opacity: 0.24;
+    opacity: 0.38;
   }
 
   .motif--node--2 {

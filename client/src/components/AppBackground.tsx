@@ -19,7 +19,7 @@ export default function AppBackground() {
           </text>
         </svg>
         <svg className="motif motif--formula motif--formula--2" viewBox="0 0 220 80" aria-hidden="true">
-          <text x="8" y="48" fill="rgba(255,176,71,0.16)" fontFamily="Inter, sans-serif" fontSize="30" fontStyle="italic">
+          <text x="8" y="48" fill="rgba(255,176,71,0.22)" fontFamily="Inter, sans-serif" fontSize="30" fontStyle="italic">
             ∫ f(x)dx
           </text>
         </svg>
@@ -181,7 +181,7 @@ export default function AppBackground() {
           <circle cx="132" cy="116" r="4" fill="rgba(30,255,246,0.26)" />
         </svg>
         <svg className="motif motif--binary motif--binary--1" viewBox="0 0 220 70" aria-hidden="true">
-          <text x="8" y="44" fill="rgba(255,255,255,0.08)" fontFamily="Inter, sans-serif" fontSize="14">01010</text>
+          <text x="8" y="44" fill="rgba(255,255,255,0.12)" fontFamily="Inter, sans-serif" fontSize="14">01010</text>
         </svg>
         <svg className="motif motif--binary motif--binary--2" viewBox="0 0 220 70" aria-hidden="true">
           <text x="8" y="44" fill="rgba(255,255,255,0.08)" fontFamily="Inter, sans-serif" fontSize="14">1011 0110</text>
